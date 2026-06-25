@@ -1,0 +1,20 @@
+{
+  "version": 8,
+  "name": "LASU Offline Campus Style",
+  "sources": {
+    "lasu-campus": {
+      "type": "geojson",
+      "data": {
+        "type": "FeatureCollection",
+        "features": []
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "campus-background",
+      "type": "background",
+      "paint": { "background-color": "#ecfdf5" }
+    }
+  ]
+}
