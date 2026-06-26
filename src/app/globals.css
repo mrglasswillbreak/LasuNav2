@@ -13,3 +13,8 @@ html {
 body {
   margin: 0;
 }
+
+.user-location-marker { position: relative; display: grid; height: 42px; width: 42px; place-items: center; transform: rotate(var(--heading, 0deg)); }
+.user-location-marker .pulse { position: absolute; height: 42px; width: 42px; border-radius: 9999px; background: rgba(37, 99, 235, 0.25); animation: user-pulse 1.8s infinite; }
+.user-location-marker svg { position: relative; height: 32px; width: 32px; filter: drop-shadow(0 6px 10px rgba(15, 23, 42, 0.35)); }
+@keyframes user-pulse { 0% { transform: scale(.55); opacity: .9; } 100% { transform: scale(1.5); opacity: 0; } }
