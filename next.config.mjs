@@ -1,42 +1,13 @@
-import withPWA from "next-pwa";
+import withSerwistInit from "@serwist/next";
 
-const pwaConfig = withPWA({
-  dest: "public",
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
   register: true,
-  skipWaiting: true,
-  clientsClaim: true,
   disable: process.env.NODE_ENV === "development",
-  runtimeCaching: [
-    {
-      urlPattern: ({ request }) => request.destination === "document",
-      handler: "NetworkFirst",
-      options: {
-        cacheName: "lasu-pages",
-        expiration: { maxEntries: 32, maxAgeSeconds: 60 * 60 * 24 * 30 }
-      }
-    },
-    {
-      urlPattern: ({ request }) => ["script", "style", "worker"].includes(request.destination),
-      handler: "StaleWhileRevalidate",
-      options: { cacheName: "lasu-static-assets" }
-    },
-    {
-      urlPattern: ({ request }) => ["font", "image"].includes(request.destination),
-      handler: "CacheFirst",
-      options: {
-        cacheName: "lasu-fonts-images",
-        expiration: { maxEntries: 96, maxAgeSeconds: 60 * 60 * 24 * 180 }
-      }
-    },
-    {
-      urlPattern: ({ url }) => url.pathname.endsWith(".json") && (url.pathname.includes("map") || url.pathname.includes("tiles") || url.pathname.includes("style")),
-      handler: "CacheFirst",
-      options: {
-        cacheName: "lasu-map-vector-layers",
-        expiration: { maxEntries: 64, maxAgeSeconds: 60 * 60 * 24 * 365 }
-      }
-    }
-  ]
+  cacheOnNavigation: true,
+  reloadOnOnline: false,
+  globPublicPatterns: ["**/*.{js,css,html,ico,png,svg,json,webmanifest,pbf,mbtiles}"]
 });
 
 /** @type {import('next').NextConfig} */
@@ -46,4 +17,4 @@ const nextConfig = {
   trailingSlash: true
 };
 
-export default pwaConfig(nextConfig);
+export default withSerwist(nextConfig);

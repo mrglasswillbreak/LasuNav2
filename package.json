@@ -4,31 +4,37 @@
   "private": true,
   "description": "Offline-first PWA campus navigator for Lagos State University, Ojo.",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint . --ext .ts,.tsx",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@serwist/next": "^9.5.11",
     "@turf/turf": "^7.1.0",
     "dexie": "^4.0.10",
     "framer-motion": "^11.18.2",
+    "idb": "^8.0.3",
     "lucide-react": "^0.468.0",
-    "next": "^14.2.23",
-    "next-pwa": "^5.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "maplibre-gl": "^5.24.0",
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "serwist": "^9.5.11"
   },
   "devDependencies": {
+    "@types/geojson-vt": "^3.2.5",
     "@types/node": "^22.10.5",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.23",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.9",
+    "geojson-vt": "^4.0.3",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vt-pbf": "^3.1.3"
   }
 }

@@ -2,19 +2,42 @@
   "version": 8,
   "name": "LASU Offline Campus Style",
   "sources": {
-    "lasu-campus": {
-      "type": "geojson",
-      "data": {
-        "type": "FeatureCollection",
-        "features": []
-      }
+    "lasu-vector": {
+      "type": "vector",
+      "tiles": [
+        "lasu-offline://tiles/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 14,
+      "maxzoom": 18
     }
   },
   "layers": [
     {
       "id": "campus-background",
       "type": "background",
-      "paint": { "background-color": "#ecfdf5" }
+      "paint": {
+        "background-color": "#ecfdf5"
+      }
+    },
+    {
+      "id": "offline-roads",
+      "type": "line",
+      "source": "lasu-vector",
+      "source-layer": "roads",
+      "paint": {
+        "line-color": "#047857",
+        "line-width": 2
+      }
+    },
+    {
+      "id": "offline-buildings",
+      "type": "fill",
+      "source": "lasu-vector",
+      "source-layer": "buildings",
+      "paint": {
+        "fill-color": "#d1fae5",
+        "fill-outline-color": "#065f46"
+      }
     }
   ]
 }
